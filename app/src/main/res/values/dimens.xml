@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="app_sponsor_font_size">10sp</dimen>
+    <dimen name="app_caption_font_size">12sp</dimen>
+    <dimen name="text_title_font_size">18sp</dimen>
+    <dimen name="text_subtitle_font_size">16sp</dimen>
+    <dimen name="text_normal_font_size">14sp</dimen>
+    <dimen name="text_caption_font_size">10sp</dimen>
+    <dimen name="text_heading_font_size">18sp</dimen>
+    <dimen name="dashboard_toolbar_elevation">0</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="nav_header_height">120dp</dimen>
+    <dimen name="nav_header_vertical_spacing">8dp</dimen>
+
+    <dimen name="normal_font_size">14sp</dimen>
+    <dimen name="small_font_size">12sp</dimen>
+    <dimen name="extra_small_font_size">10sp</dimen>
+    <dimen name="space_8dp">8dp</dimen>
+</resources>

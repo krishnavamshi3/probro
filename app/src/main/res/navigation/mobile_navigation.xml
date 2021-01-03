@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.style.probro.dashboard.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" >
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_bloglist"
+        android:name="com.style.probro.dashboard.ui.bloglist.BlogListFragment"
+        android:label="@string/title_blogs"
+        tools:layout="@layout/fragment_bloglist" >
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_nearby"
+        android:name="com.style.probro.dashboard.ui.nearbby.NearbyFragment"
+        android:label="@string/title_nearby"
+        tools:layout="@layout/fragment_nearby" >
+
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_settings"
+        android:name="com.style.probro.dashboard.ui.settings.SettingsFragment"
+        android:label="@string/title_settings"
+        tools:layout="@layout/fragment_settings" />
+</navigation>

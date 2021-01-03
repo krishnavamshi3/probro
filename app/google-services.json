@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "589681287055",
+    "project_id": "probrostore-9b11b",
+    "storage_bucket": "probrostore-9b11b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:589681287055:android:f9653bcd4a33aa14f1b5fa",
+        "android_client_info": {
+          "package_name": "com.style.probro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "589681287055-s5lbh0qrv7svdk4jes0mdfa0bpch6ap3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.style.probro",
+            "certificate_hash": "2d3f49f28349fe2f5bfbfabfb3d1456165857761"
+          }
+        },
+        {
+          "client_id": "589681287055-elgrheq7a13nd8dg9fbs02ellc9u616k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAVcBn3_cWwmhIizR5-kUEPnc-nd-rI4tg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "589681287055-elgrheq7a13nd8dg9fbs02ellc9u616k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,85 @@
+<resources>
+    <string name="app_name">probro</string>
+
+    <string name="app_caption">A multi-brand collection store for Men</string>
+    <string name="app_sponser_text">Copyright &#169; Zevatrolabs, Inc</string>
+    <string name="app_icon_image">app_icon_image</string>
+    <string name="Who_We_Are">Who We Are</string>
+    <string name="i_understood">I understood</string>
+    <string name="on_click_i_understood_you_accept_our">On click I UNDERSTOOD, you accept our</string>
+    <string name="terms_and_conditions"><![CDATA[Terms & Conditions]]></string>
+    <string name="_100_original_branded_selected_articles">100% Original Branded Selected Articles</string>
+    <string name="shop_online_all_over_india">Shop online all over India.</string>
+    <string name="returns_accepted_within_3_days_from_delivery">Returns accepted within 3 days from delivery.</string>
+    <string name="welcome">Welcome!</string>
+    <string name="we_are_glad_to_see_you_onboard">We are glad to see you OnBoard!!!</string>
+    <string name="image_100_original_guaranteed">image_100_original_guaranteed</string>
+    <string name="select_online">Select Online</string>
+    <string name="trial_offline">Trial Offline</string>
+    <string name="_3_day">15 Day</string>
+    <string name="returns">Returns</string>
+    <string name="action_cart">cart</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_blogs">Blog</string>
+    <string name="title_nearby">Nearby</string>
+    <string name="menu_icon_black">Menu icon black</string>
+
+    <string name="drawer_open">open</string>
+    <string name="drawer_close">close</string>
+    <string name="hello">Hi!</string>
+    <string name="login">Login</string>
+
+    <!-- warning messages -->
+    <string name="google_login_message">We use google login for simple and secure authentication.</string>
+    <string name="sign_in_cancel_error_string">You have cancelled the sign-in flow</string>
+    <string name="unknown_error_occur_error_string">Something occurred. please try again!</string>
+
+    <!-- menu strings -->
+    <string name="return_policy">Return Policy</string>
+    <string name="share">SHARE</string>
+    <string name="communicate">communicate</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="activity_back_icon_black">activity back icon</string>
+    <string name="faq">FAQ\'s</string>
+    <string name="help_support"><![CDATA[Help & Support]]></string>
+    <string name="my_orders">MY ORDERS</string>
+    <string name="feedback">FEEDBACK</string>
+    <string name="settings">SETTINGS</string>
+    <string name="title_settings">Settings</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="logout">Logout</string>
+    <string name="qty">Qty:</string>
+    <string name="save_for_later">Save for later</string>
+    <string name="remove">Remove</string>
+    <string name="place_order">Place Order</string>
+
+    <!-- font family -->
+    <string name="activity_title_header_font_family">sans-serif-black</string>
+    <string name="app_text_font_family">sans-serif</string>
+
+
+    <string name="terms_and_conditions_not_found_in_server_msg">\"TermsAndConditions not found! Please try again later!\"</string>
+
+    <!-- symbols -->
+    <string name="Rupee">\u20B9</string>
+    <string name="price_text">\u20B9 %1$d</string>
+
+    <string name="add_to_my_bag">Add to my bag</string>
+    <string name="discount_text">%1$d%% OFF</string>
+    <string name="size">Size</string>
+    <string name="color">Color</string>
+
+    <!-- Activity Titles -->
+    <string name="product_description">Product Description</string>
+    <string name="my_bag">My Bag</string>
+    <string name="order_summary">Order Summary</string>
+    <string name="address">Address</string>
+    <string name="order_now">Order Now</string>
+    <string name="actual_price">Actual Price</string>
+    <string name="shipping_fee">Shipping fee</string>
+    <string name="total_amount">Total Amount</string>
+    <string name="payment_method">Payment Method</string>
+
+</resources>
