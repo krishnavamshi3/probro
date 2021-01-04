@@ -11,6 +11,8 @@ public class PBTransaction implements Parcelable {
     private int transactionAmount;
 
     public PBTransaction() {
+        transactionID = "";
+        transactionAmount = -1;
     }
 
     protected PBTransaction(Parcel in) {

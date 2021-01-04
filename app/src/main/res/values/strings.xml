@@ -81,5 +81,9 @@
     <string name="shipping_fee">Shipping fee</string>
     <string name="total_amount">Total Amount</string>
     <string name="payment_method">Payment Method</string>
+    <string name="shipping_info">Shipping Info</string>
+    <string name="shipping_status_text">%1$s</string>
+    <string name="shipping_note_text">%1$s</string>
+    <string name="order_details">Order Details</string>
 
 </resources>

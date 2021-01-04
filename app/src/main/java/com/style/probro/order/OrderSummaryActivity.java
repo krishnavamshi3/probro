@@ -19,6 +19,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.style.probro.AppDatabase;
 import com.style.probro.R;
 import com.style.probro.app_utils.AppConstants;
+import com.style.probro.app_utils.AppRoute;
 import com.style.probro.app_utils.AppUtils;
 import com.style.probro.cart.MyCartActivity;
 import com.style.probro.firebase_api.FirebaseConstants;
@@ -28,6 +29,7 @@ import com.style.probro.models.FailureObject;
 import com.style.probro.models.MyCartItem;
 import com.style.probro.models.PBAddress;
 import com.style.probro.models.PBOrder;
+import com.style.probro.models.PBShippingInfo;
 import com.style.probro.room.MyCartDao;
 
 import java.lang.ref.WeakReference;
@@ -137,9 +139,12 @@ public class OrderSummaryActivity extends AppCompatActivity {
                 .replace("com","")
         );
         mOrder.setUserEmail(account.getEmail());
-
+        mOrder.setShippingFee(SHIPPING_FEE);
         mOrder.setOrderID(mOrder.getPbAddress().getName() + String.valueOf((new Date()).getTime()));
-
+        mOrder.setOrderDate(new Date());
+        PBShippingInfo shippingInfo = new PBShippingInfo();
+        shippingInfo.setShipStatus("OrderPlaced.");
+        shippingInfo.setShipNote("Your Order is Placed. We are about to accept your order. Please recieve call from our authorized agent for confirming the order.");
         ProgressDialog dialog = ProgressDialog.show(this, "","Please wait...", true, false);
         mOrderAPI.writeNewOrder(mOrder, new OnCrudFirebaseCallback<PBOrder>() {
             @Override

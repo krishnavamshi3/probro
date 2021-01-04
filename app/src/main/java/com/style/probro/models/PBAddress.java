@@ -1,11 +1,10 @@
 package com.style.probro.models;
 
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
+import android.os.Parcel;
+import android.os.Parcelable;
 
-@Entity(tableName = "pb_address")
-public class PBAddress {
-    @PrimaryKey
+
+public class PBAddress implements Parcelable {
     private String id;
     private String name;
     private String phoneNumber;
@@ -15,7 +14,52 @@ public class PBAddress {
     private String emailID;
 
     public PBAddress() {
+        id = "";
+        name = "";
+        phoneNumber = "";
+        addressLine1 = "";
+        addressLine2 = "";
+        zipCode = "";
+        emailID = "";
     }
+
+    protected PBAddress(Parcel in) {
+        id = in.readString();
+        name = in.readString();
+        phoneNumber = in.readString();
+        addressLine1 = in.readString();
+        addressLine2 = in.readString();
+        zipCode = in.readString();
+        emailID = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(id);
+        dest.writeString(name);
+        dest.writeString(phoneNumber);
+        dest.writeString(addressLine1);
+        dest.writeString(addressLine2);
+        dest.writeString(zipCode);
+        dest.writeString(emailID);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<PBAddress> CREATOR = new Creator<PBAddress>() {
+        @Override
+        public PBAddress createFromParcel(Parcel in) {
+            return new PBAddress(in);
+        }
+
+        @Override
+        public PBAddress[] newArray(int size) {
+            return new PBAddress[size];
+        }
+    };
 
     public String getName() {
         return name;

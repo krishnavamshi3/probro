@@ -3,6 +3,7 @@ package com.style.probro.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.Date;
 import java.util.List;
 
 public class PBOrder implements Parcelable {
@@ -15,6 +16,8 @@ public class PBOrder implements Parcelable {
     private String orderType;
     private String userName;
     private String userEmail;
+    private Date orderDate;
+    private int shippingFee;
 
     public PBOrder() {
     }
@@ -23,11 +26,13 @@ public class PBOrder implements Parcelable {
         orderID = in.readString();
         cartItems = in.createTypedArrayList(MyCartItem.CREATOR);
         totalPrice = in.readInt();
+        pbAddress = in.readParcelable(PBAddress.class.getClassLoader());
         pbTransaction = in.readParcelable(PBTransaction.class.getClassLoader());
         shippingInfo = in.readParcelable(PBShippingInfo.class.getClassLoader());
         orderType = in.readString();
         userName = in.readString();
         userEmail = in.readString();
+        shippingFee = in.readInt();
     }
 
     @Override
@@ -35,11 +40,13 @@ public class PBOrder implements Parcelable {
         dest.writeString(orderID);
         dest.writeTypedList(cartItems);
         dest.writeInt(totalPrice);
+        dest.writeParcelable(pbAddress, flags);
         dest.writeParcelable(pbTransaction, flags);
         dest.writeParcelable(shippingInfo, flags);
         dest.writeString(orderType);
         dest.writeString(userName);
         dest.writeString(userEmail);
+        dest.writeInt(shippingFee);
     }
 
     @Override
@@ -76,6 +83,7 @@ public class PBOrder implements Parcelable {
     }
 
     public PBAddress getPbAddress() {
+        if(pbAddress == null) return new PBAddress();
         return pbAddress;
     }
 
@@ -84,6 +92,7 @@ public class PBOrder implements Parcelable {
     }
 
     public PBTransaction getPbTransaction() {
+        if(pbTransaction == null) return new PBTransaction();
         return pbTransaction;
     }
 
@@ -92,6 +101,7 @@ public class PBOrder implements Parcelable {
     }
 
     public PBShippingInfo getShippingInfo() {
+        if(shippingInfo == null) return new PBShippingInfo();
         return shippingInfo;
     }
 
@@ -129,5 +139,21 @@ public class PBOrder implements Parcelable {
 
     public void setUserEmail(String userEmail) {
         this.userEmail = userEmail;
+    }
+
+    public Date getOrderDate() {
+        return orderDate;
+    }
+
+    public void setOrderDate(Date orderDate) {
+        this.orderDate = orderDate;
+    }
+
+    public int getShippingFee() {
+        return shippingFee;
+    }
+
+    public void setShippingFee(int shippingFee) {
+        this.shippingFee = shippingFee;
     }
 }

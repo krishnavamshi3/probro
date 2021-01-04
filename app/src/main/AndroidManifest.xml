@@ -13,7 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/ThemeProBro">
-        <activity android:name=".order.OrderSummaryActivity"/>
+        <activity android:name=".order.MyOrderDetailActivity"></activity>
+        <activity android:name=".order.MyOrdersListActivity" />
+        <activity android:name=".order.OrderSummaryActivity" />
         <activity android:name=".cart.MyCartActivity" />
         <activity android:name=".product_description.ProductDescriptionActivity" />
         <activity android:name=".auth.FirebaseUIActivity" />

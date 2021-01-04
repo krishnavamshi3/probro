@@ -12,6 +12,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -74,6 +75,12 @@ public class HomeFragment extends Fragment implements IAllArticleAdapterEventLis
         mProgressBar = root.findViewById(R.id.home_all_article_loading_pb);
         mCartItemNoBadge =  root.findViewById(R.id.cart_layout);
         mCartItemNoBadge.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AppRoute.myCart(getActivity());
+            }
+        });
+        mCartItemNoBadge.findViewById(R.id.imageButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AppRoute.myCart(getActivity());
@@ -192,6 +199,11 @@ public class HomeFragment extends Fragment implements IAllArticleAdapterEventLis
             int id = menuItem.getItemId();
             if(id == R.id.nav_share) {
                 onShare();
+            } else if (id == R.id.my_orders) {
+                GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getActivity());
+                if(account != null && account.getEmail() != null) {
+                    AppRoute.myOrdersList(getActivity());
+                }
             }
             drawerLayout.closeDrawer(GravityCompat.START);
             return true;

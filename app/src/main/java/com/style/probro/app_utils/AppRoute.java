@@ -3,6 +3,8 @@ package com.style.probro.app_utils;
 import android.app.Activity;
 import android.content.Intent;
 
+import com.style.probro.order.MyOrderDetailActivity;
+import com.style.probro.order.MyOrdersListActivity;
 import com.style.probro.order.OrderSummaryActivity;
 import com.style.probro.models.PBOrder;
 import com.style.probro.auth.FirebaseUIActivity;
@@ -43,6 +45,16 @@ public class AppRoute {
 
     public static void orderSummary(Activity ac, PBOrder pbOrder) {
         Intent intent = new Intent(ac, OrderSummaryActivity.class);
+        intent.putExtra(AppConstants.PB_ORDER_INTENT_KEY, pbOrder);
+        ac.startActivity(intent);
+    }
+
+    public static void myOrdersList(Activity ac) {
+        ac.startActivity(new Intent(ac, MyOrdersListActivity.class));
+    }
+
+    public static void myOrderDetail(Activity ac, PBOrder pbOrder) {
+        Intent intent = new Intent(ac, MyOrderDetailActivity.class);
         intent.putExtra(AppConstants.PB_ORDER_INTENT_KEY, pbOrder);
         ac.startActivity(intent);
     }

@@ -13,6 +13,9 @@ public class PBShippingInfo implements Parcelable {
     private String shipNote;
 
     public PBShippingInfo() {
+        shipStatus = "";
+        shipDocumentUrl ="";
+        shipNote = "";
     }
 
     protected PBShippingInfo(Parcel in) {
