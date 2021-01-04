@@ -1,11 +1,14 @@
 package com.style.probro.product_description;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
 
 import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
@@ -23,6 +26,7 @@ import com.style.probro.models.MyCartItem;
 import com.style.probro.models.PBArticle;
 
 import java.lang.ref.WeakReference;
+import java.util.List;
 
 public class ProductDescriptionActivity extends AppCompatActivity {
     ImageView mProductImage1, mProductImage2,mProductImage3, mProductImage4,mProductImage5, mProductImage6;
@@ -46,11 +50,30 @@ public class ProductDescriptionActivity extends AppCompatActivity {
 
         if(mPBArticle.getSize() != null && !mPBArticle.getSize().isEmpty()) {
             sizeSpinner = findViewById(R.id.pd_size_spinner);
-            ArrayAdapter sizeSpinnerAdapter
-                    = new ArrayAdapter(
-                    this,
-                    android.R.layout.simple_spinner_item,
-                    mPBArticle.getSize());
+
+            ArrayAdapter<String> sizeSpinnerAdapter = new ArrayAdapter<String>(this, R.layout.pd_spinner_item,mPBArticle.getSize()) {
+
+                public View getView(int position, View convertView, ViewGroup parent) {
+
+                    View v = super.getView(position, convertView, parent);
+
+                    ((TextView) v).setTextSize(16);
+
+                    return v;
+
+                }
+
+                public View getDropDownView(int position, View convertView,ViewGroup parent) {
+
+                    View v = super.getDropDownView(position, convertView,parent);
+
+                    ((TextView) v).setGravity(Gravity.CENTER);
+
+                    return v;
+
+                }
+
+            };
             sizeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -77,11 +100,35 @@ public class ProductDescriptionActivity extends AppCompatActivity {
 
         if(mPBArticle.getColor() != null && !mPBArticle.getColor().isEmpty()) {
             colorSpinner = findViewById(R.id.pd_color_spinner);
-            ArrayAdapter colorSpinnerAdapter
-                    = new ArrayAdapter(
-                    this,
-                    android.R.layout.simple_spinner_item,
-                    mPBArticle.getColor());
+//            ArrayAdapter colorSpinnerAdapter
+//                    = new ArrayAdapter(
+//                    this,
+//                    android.R.layout.simple_spinner_item,
+//                    mPBArticle.getColor());
+            ArrayAdapter<String> colorSpinnerAdapter = new ArrayAdapter<String>(this, R.layout.pd_spinner_item, mPBArticle.getColor()) {
+
+                public View getView(int position, View convertView, ViewGroup parent) {
+
+                    View v = super.getView(position, convertView, parent);
+
+                    ((TextView) v).setTextSize(16);
+
+                    return v;
+
+                }
+
+                public View getDropDownView(int position, View convertView,ViewGroup parent) {
+
+                    View v = super.getDropDownView(position, convertView,parent);
+
+                    ((TextView) v).setGravity(Gravity.CENTER);
+
+                    return v;
+
+                }
+
+            };
+
             colorSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -170,7 +217,7 @@ public class ProductDescriptionActivity extends AppCompatActivity {
         myCartItem.setSelectedColor(selectedColor);
         myCartItem.setSelectedSize(selectedSize);
         myCartItem.setPbArticle(mPBArticle);
-        myCartItem.setCartItemID(mPBArticle.getId());
+        myCartItem.setCartItemID(mPBArticle.getId() + selectedColor + selectedSize);
 
         new InsertAsyncTask(this, myCartItem, new IPostExecute() {
             @Override
@@ -202,7 +249,11 @@ public class ProductDescriptionActivity extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... voids) {
             MyCartDao agentDao = AppDatabase.getDb().myCartDao();
-            agentDao.insertCartItem(this.myCartItem);
+            try {
+                agentDao.insertCartItem(this.myCartItem);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             return null;
         }
 

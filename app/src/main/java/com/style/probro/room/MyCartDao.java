@@ -28,4 +28,6 @@ public interface MyCartDao {
     @Delete
     void delete(MyCartItem myCartItem);
 
+    @Query("DELETE FROM my_cart_item")
+    void deleteAll();
 }

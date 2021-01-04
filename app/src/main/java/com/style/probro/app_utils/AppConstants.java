@@ -6,4 +6,7 @@ public class AppConstants {
     public static final String PB_ORDER_INTENT_KEY = "PB_ORDER_INTENT_KEY";
     public static String appstore_text = "https://play.google.com/store/apps/details?id=";
     public static String share_message_text = "\nCheckout the app from : \n\n";
+
+
+    public static final String ORDER_TYPE_COD = "COD";
 }

@@ -12,6 +12,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.style.probro.AppDatabase;
 import com.style.probro.models.PBOrder;
 import com.style.probro.R;
@@ -84,7 +86,11 @@ public class MyCartActivity extends AppCompatActivity implements ICartItemEventL
             return;
         }
 
-        Toast.makeText(this, "Sorry! We are not accepting any orders now!", Toast.LENGTH_SHORT).show();
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+        if(account == null || account.getEmail() == null) {
+            Toast.makeText(this, "Please login to place order!", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         PBOrder pbOrder = new PBOrder();
         pbOrder.setCartItems(mCarItemList);

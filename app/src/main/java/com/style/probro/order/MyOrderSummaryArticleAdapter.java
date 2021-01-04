@@ -1,4 +1,4 @@
-package com.style.probro.cart;
+package com.style.probro.order;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -13,29 +13,27 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 import com.style.probro.R;
+import com.style.probro.cart.ICartItemEventListener;
 import com.style.probro.models.MyCartItem;
 
 import java.util.List;
 
-public class MyCartAdapter extends RecyclerView.Adapter<MyCartAdapter.MyViewHolder>{
+public class MyOrderSummaryArticleAdapter extends RecyclerView.Adapter<MyOrderSummaryArticleAdapter.MyViewHolder>{
 
     private Context mContext;
     private List<MyCartItem> myCartItemList;
-    private ICartItemEventListener iCartItemEventListener;
 
-    MyCartAdapter(Context context, List<MyCartItem> cartItems, ICartItemEventListener listener) {
+    MyOrderSummaryArticleAdapter(Context context, List<MyCartItem> cartItems) {
         this.mContext = context;
         this.myCartItemList = cartItems;
-        this.iCartItemEventListener = listener;
     }
 
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View mView = LayoutInflater.from(parent.getContext()).inflate(R.layout.cart_item, parent, false);
+        View mView = LayoutInflater.from(parent.getContext()).inflate(R.layout.order_summary_item, parent, false);
         return  new MyViewHolder(mView);
     }
 
@@ -52,46 +50,12 @@ public class MyCartAdapter extends RecyclerView.Adapter<MyCartAdapter.MyViewHold
                 //.placeholder(R.drawable.ic_probro_icon_grey)
                 //.apply(new RequestOptions().override(140, 100))
                 .into(holder.mArticleThumbImage);
-        holder.mArticleQuantityText.setText(String.valueOf(myCartItem.getQuantity()));
-        holder.mSaveCart.setOnClickListener(v -> iCartItemEventListener.onSaveCartItem(myCartItem));
 
-        holder.mRemoveCart.setOnClickListener(v -> iCartItemEventListener.onRemoveCartItem(myCartItem));
-
-        holder.onQuantityPlus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int qty = myCartItem.getQuantity();
-                qty+=1;
-                myCartItem.setQuantity(qty);
-                iCartItemEventListener.onCartUpdate(myCartItem);
-            }
-        });
-
-        holder.onQuantityMinus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int qty = myCartItem.getQuantity();
-                if(qty == 1) return;
-                qty-=1;
-                if(qty <1) qty = 1;
-                myCartItem.setQuantity(qty);
-                iCartItemEventListener.onCartUpdate(myCartItem);
-            }
-        });
-        if (myCartItem.getPbArticle().isAvailability()) {
-            holder.mSoldOut.setVisibility(View.GONE);
-            holder.onQuantityPlus.setClickable(true);
-            holder.onQuantityMinus.setClickable(true);
-            holder.mQtyLayout.setVisibility(View.VISIBLE);
-        } else {
-            holder.mSoldOut.setVisibility(View.VISIBLE);
-            holder.onQuantityPlus.setClickable(false);
-            holder.onQuantityMinus.setClickable(false);
-            holder.mQtyLayout.setVisibility(View.GONE);
-        }
         // Add selected size and color.
         String selectedSize = myCartItem.getSelectedSize();
         String selectedColor = myCartItem.getSelectedColor();
+        int selectedQuantity = myCartItem.getQuantity();
+
         String extraText = "";
         if(selectedSize != null && !selectedSize.isEmpty()) {
             extraText+= "size: "+selectedSize+" ";
@@ -99,6 +63,7 @@ public class MyCartAdapter extends RecyclerView.Adapter<MyCartAdapter.MyViewHold
         if(selectedColor != null && !selectedColor.isEmpty()) {
             extraText+= "color: "+selectedColor;
         }
+        extraText+= "Qty: "+selectedQuantity;
         holder.mArticleExtraText.setText(extraText);
     }
 
@@ -117,13 +82,9 @@ public class MyCartAdapter extends RecyclerView.Adapter<MyCartAdapter.MyViewHold
 
         private ImageView mArticleThumbImage;
         private TextView mArticleName;
-        private TextView mArticleExtraText, mRemoveCart, mSaveCart;
+        private TextView mArticleExtraText;
         private TextView mArticlePayPrice;
         private TextView mArticleMRPPrice, mArticleDiscountText, mArticleQuantityText;
-
-        private ImageButton onQuantityPlus, onQuantityMinus;
-        private ImageView mSoldOut;
-        private RelativeLayout mQtyLayout;
 
 
         public MyViewHolder(@NonNull View itemView) {
@@ -135,12 +96,6 @@ public class MyCartAdapter extends RecyclerView.Adapter<MyCartAdapter.MyViewHold
             mArticleMRPPrice = itemView.findViewById(R.id.cart_mrp_price_tv);
             mArticleDiscountText = itemView.findViewById(R.id.cart_discount_tv);
             mArticleQuantityText = itemView.findViewById(R.id.cart_quantity_tv);
-            mRemoveCart = itemView.findViewById(R.id.cart_remove);
-            mSaveCart = itemView.findViewById(R.id.cart_save_for_later);
-            onQuantityMinus = itemView.findViewById(R.id.cart_btn_qty_minus);
-            onQuantityPlus = itemView.findViewById(R.id.cart_btn_qty_plus);
-            mSoldOut = itemView.findViewById(R.id.soldout_iv);
-            mQtyLayout = itemView.findViewById(R.id.qty_layout);
         }
     }
 }
